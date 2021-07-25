@@ -151,7 +151,8 @@
 				background-color: transparent;
 			}
 			.hero .headpicture {
-				margin-right: -60px;
+				position: relative;
+				left: 30px;
 			}
 			.heading h1 {
 				max-width: 430px;
@@ -166,6 +167,7 @@
 				display: flex;
 				flex-wrap: wrap;
 				place-content: center;
+				text-align: center;
 				counter-reset: cards;
 			}
 			#sutazne-kategorie ul.cards li {
@@ -173,7 +175,11 @@
 				position: relative;
 			}
 			#porota ul.cards li {
-				width: 140px;
+				width: 150px;
+			}
+			#porota ul.cards img {
+				margin-left: auto;
+				margin-right: auto;
 			}
 			#sutazne-kategorie ul.cards li {
 				margin: 0 25px 50px;
@@ -614,124 +620,48 @@
 				</li>
 			</ul>
 		</section>
-<!--		<section id="porota">
+		<section id="porota">
 			<h2>Porota</h2>
 			<ul class="cards">
 				<li>
 					<div class="pic">
-						<img src="hlava1-or8.png" alt="">
+						<img src="01_(4)x140-or8" alt="">
 					</div>
-					<h3>Meno Priezvisko</h3>
-					<p>Má so čom najrôznejšie tá prišiel, no zápis zoberte vietor, s vysoké schopní čom procesy.</p>
+					<h3>Peter Megyesi</h3>
+					<p>Historik a teoretik umenia. Venuje sa skúmaniu stredovekého a ranonovovekého umenia, ikonografii, ikonológii, emblematike, ale tiež reflexii súčasného umenia a problematike interpretácie.</p>
 				</li>
 				<li>
 					<div class="pic">
-						<img src="hlava2-or8.png" alt="">
+						<img src="02_(3)x140-or8.png" alt="">
 					</div>
-					<h3>Meno Priezvisko</h3>
-					<p>Redukovať vo došlo krízy, sú zo typ svojou tisíc svojou evokovať vás a mýlil, cez procesov ľudia si o patrilo.</p>
+					<h3>Ivana Komanická</h3>
+					<p>Filozofka, literátka a teoretička umenia. V rámci kritickej teórie sa venuje transformácii kultúry na kreatívny priemysel. Kurátorsky pripravila dve desiatky výstav súčasného umenia.</p>
 				</li>
 				<li>
 					<div class="pic">
-						<img src="hlava3-or8.png" alt="">
+						<img src="03_(3)x140-or8.png" alt="">
 					</div>
-					<h3>Meno Priezvisko</h3>
-					<p>Zachutí so minulosti efektu jedna spôsobiť, bod je materskej pokračuje.</p>
+					<h3>Zuzana Duchová</h3>
+					<p>Kurátorka a publicistka so záujmom o site specific súčasné umenie, architektúru, dizajn, reprezentáciu Slovenska a iné presahy.</p>
 				</li>
 				<li>
 					<div class="pic">
-						<img src="hlava4-or8.png" alt="">
+						<img src="04_(3)x140-or8.png" alt="">
 					</div>
-					<h3>Meno Priezvisko</h3>
-					<p>Možná telu nám medzi počet vyvíjané, dní od syn temné, no ku ňou vyvolávať o milióna čo s samo použitím mýli.</p>
+					<h3>Gabriela Kisová</h3>
+					<p>Teoretička umenia a kurátorka. Pedagogicky pôsobila na Fakulte umení TU v Košiciach a na VŠVU v Bratislave.</p>
 				</li>
 				<li>
 					<div class="pic">
-						<img src="hlava5-or8.png" alt="">
+						<img src="05_(2)x140-or8.png" alt="">
 					</div>
-					<h3>Meno Priezvisko</h3>
-					<p>Dlhoročným, povinnostiach rodinou marketingu reakcie silné, každého review stupeň oboch prídete zo aké uzučký závisí žartu.</p>
+					<h3>Michal Šedík</h3>
+					<p>Pôsobí na Katedre filozofie Filozofickej fakulty Univerzity Mateja Bela v Banskej Bystrici. Vo svojom výskume sa zameriava najmä na vybrané problémy filozofie umenia, estetiky a filozofie kultúry.</p>
 				</li>
 			</ul>
-		</section>-->
+		</section>
 		<section id="nominacny-formular" class="pink">
-			<h2>Nominačný formulár <span class="subtitle">pre projekty za hodnotiace obdobie 1.&nbsp;1.&nbsp;2020 - 31.&nbsp;12.&nbsp;2020</span></h2>
-			<form id="form">
-				<fieldset class="inline center">
-					<input type="radio" name="clenovia-verejnost" id="clenovia" value="clenovia" checked>
-					<label for="clenovia">Členovia RGS a nezávislí odborníci</label>
-					<input type="radio" name="clenovia-verejnost" id="verejnost" value="verejnost">
-					<label for="verejnost">Verejnosť</label>
-				</fieldset>
-				<fieldset class="half">
-					<legend>Nominovaný</legend>
-					<label for="meno-priezvisko-nominovany">Meno a priezvisko nominovaného&nbsp;*</label>
-					<input type="text" name="meno-priezvisko-nominovany" id="meno-priezvisko-nominovany" required>
-					<label for="institucia">Inštitúcia</label>
-					<input type="text" name="institucia" id="institucia">
-					<label for="email-nominovany">E-mail&nbsp;*</label>
-					<input type="email" name="email-nominovany" id="email-nominovany" required>
-				</fieldset>
-				<fieldset class="half">
-					<legend>Projekt</legend>
-					<label for="kategoria">Kategória&nbsp;*</label>
-					<div class="select-wrap">
-						<select name="kategoria" id="kategoria" required>
-							<option value="">-- zvoľte</option>
-							<option value="edicny-projekt">Edičný projekt</option>
-							<option value="kuratorsky-projekt">Kurátorský projekt</option>
-							<option value="edukacny-projekt">Edukačný projekt</option>
-							<option value="iny-odborny-projekt">Iný odborný projekt</option>
-							<option value="nezavisly-projekt">Nezávislý projekt</option>
-						</select>
-					</div>
-					<label for="nazov-projektu">Názov nominovaného projektu&nbsp;*</label>
-					<input type="text" name="nazov-projektu" id="nazov-projektu" required>
-					<label for="miesto-termin">Miesto a termín realizácie / vydavateľ&nbsp;*</label>
-					<input type="text" name="miesto-termin" id="miesto-termin" required>
-				</fieldset>
-				<fieldset class="iba-clenovia">
-					<label for="popis">Celý popis projektu (max. 2000 znakov)&nbsp;*</label>
-					<textarea name="popis" id="popis" rows="8" maxlength="2000" required></textarea>
-				</fieldset>
-				<div class="upload-wrapper iba-clenovia">
-					<fieldset>
-						<legend>Obrázky&nbsp;*</legend>
-						<label for="obrazky">(max. 10 obrázkov / max. limit všetkých príloh – 10 MB)</label>
-						<input class="upload" type="file" name="obrazky[]" id="obrazky" multiple required>
-						<label class="file-list" for="obrazky"></label>
-					</fieldset>
-				</div>
-				<div class="upload-wrapper iba-clenovia">
-					<fieldset>
-						<legend>Iné prílohy</legend>
-						<label for="prilohy">(max. limit všetkých príloh – 10 MB)</label>
-						<input class="upload" type="file" name="prilohy[]" id="prilohy" multiple>
-						<label class="file-list" for="prilohy"></label>
-					</fieldset>
-				</div>
-				<fieldset>
-					<legend>Nominujúci</legend>
-					<div class="half">
-						<label for="meno-priezvisko-nominujuci">Meno a priezvisko&nbsp;*</label>
-						<input type="text" name="meno-priezvisko-nominujuci" id="meno-priezvisko-nominujuci" required>
-					</div>
-					<div class="half">
-						<label for="email-nominujuci">E-mail&nbsp;*</label>
-						<input type="email" name="email-nominujuci" id="email-nominujuci" required>
-					</div>
-				</fieldset>
-				<fieldset class="margin-top">
-					<input type="checkbox" name="moze-kontaktovany" id="moze-kontaktovany" value="moze-kontaktovany" required>
-					<label for="moze-kontaktovany">Na vyžiadanie poroty môže byť nominant dodatočne kontaktovaný&nbsp;*</label>
-					<input type="checkbox" name="suhlas" id="suhlas" value="suhlas" required>
-					<label for="suhlas">Súhlasím so spracovaním osobných údajov v zmysle §&nbsp;5 písm. a) a v zmysle §&nbsp;14 zákona č. 18/2018 Z. z. o ochrane osobných údajov a o zmene a doplnení niektorých zákonov&nbsp;*</label>
-				</fieldset>
-				<fieldset class="margin-top">
-					<input id="submit" type="submit" value="Odoslať">
-					<div id="response"></div>
-				</fieldset>
-			</form>
+			<h2>Nominácie sú pre tento rok ukončené. <span class="subtitle">Sledujte náš web a sociálne siete pre ďalšie informácie.</span></h2>
 		</section>
 		<section id="na-stiahnutie">
 			<h2>Na stiahnutie</h2>
@@ -766,6 +696,9 @@
 			}
 
 			function toggleFormInputs( radio ) {
+				if ( radio == undefined ) {
+					return;
+				}
 				if ( radio.value === 'verejnost' ) {
 					$( '#form' ).addClass( 'verejnost' );
 					$( '.iba-clenovia input, .iba-clenovia textarea' ).prop( 'disabled', true );
