@@ -1,0 +1,843 @@
+<!doctype html>
+<html lang="sk-SK">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>Ocenenie Biela kocka</title>
+		<meta name="description" content="Biela kocka je cenou za prínos v oblasti galerijných činností. Cena je určená odborníkom: teoretikom, kurátorom, galerijným pedagógom, reštaurátorom, dizajnérom, či kultúrnym manažérom.">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="Rada galérií Slovenska, rgsr.sk">
+		<meta name="web_author" content="Marián Kadaňka, kadanka.net">
+		<meta name="theme-color" content="#111111">
+		<meta property="og:type" content="website">
+		<meta property="og:url" content="https://bielakocka.sk/">
+		<meta property="og:title" content="Ocenenie Biela kocka">
+		<meta property="og:description" content="Biela kocka je cenou za prínos v oblasti galerijných činností.">
+		<meta property="og:image" content="https://bielakocka.sk/fb-sharing.png">
+		<link rel="icon" href="favicon.svg">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+		<style>
+			@font-face {
+				font-family: 'NeueMachina';
+				font-style: normal;
+				font-weight: 400;
+				font-display: swap;
+				src: url('NeueMachina-Regular.woff') format('woff'), url('NeueMachina-Regular.woff2') format('woff2');
+			}
+			@font-face {
+				font-family: 'NeueMachina';
+				font-style: normal;
+				font-weight: 800;
+				font-display: swap;
+				src: url('NeueMachina-Ultrabold.woff') format('woff'), url('NeueMachina-Ultrabold.woff2') format('woff2');
+			}
+			html {
+				color: #000;
+				background-color: #fff;
+				font-size: 1em;
+				height: 100%;
+				box-sizing: border-box;
+				scroll-behavior: smooth;
+			}
+			*, *:before, *:after {
+				box-sizing: inherit;
+			}
+			body {
+				font-family: 'NeueMachina', monospace;
+				background: url('back.png') -20px -20px;
+				min-height: 100%;
+				display: flex;
+				flex-direction: column;
+			}
+			img {
+				display: block;
+				max-width: 100%;
+			}
+			a {
+				color: #000;
+				text-decoration: none;
+			}
+			header a {
+				color: #fff;
+			}
+			a, svg path, svg circle {
+				-o-transition:.3s;
+				-ms-transition:.3s;
+				-moz-transition:.3s;
+				-webkit-transition:.3s;
+			}
+			a:hover {
+				color: #ff8095;
+			}
+			a:hover svg path, a:hover svg circle {
+				fill: #ff8095;
+			}
+			fieldset {
+				border: 0;
+				padding: 0;
+			}
+			section, header, footer {
+				width: 100%;
+				margin: 0 auto;
+				display: flex;
+				place-items: center;
+			}
+			section {
+				padding: 50px 3%;
+				flex-direction: column;
+				background-color: #fff;
+			}
+			section.dark {
+				background-color: #1a1a1a;
+				color: #fff;
+			}
+			section.pink {
+				background-color: #ffcfd5;
+			}
+			section h2 {
+				font-size: 38px;
+				margin: 0 0 1em;
+				text-align: center;
+			}
+			section h2 .subtitle {
+				font-size: 16px;
+				display: block;
+				line-height: 1.5;
+			}
+			section p {
+				max-width: 800px;
+				margin: 0 0 1em;
+				text-align: left;
+				line-height: 1.5;
+			}
+			header {
+				padding: 20px 3% 30px;
+				justify-content: space-between;
+				color: #fff;
+			}
+			header .logo {
+				margin-right: 50px;
+			}
+			header .mobile-wrapper {
+				display: flex;
+				flex: 1;
+			}
+			ul.menu {
+				display: flex;
+				flex-wrap: wrap;
+				list-style: none;
+				padding: 0;
+			}
+			ul.menu.nav {
+				font-weight: 800;
+				place-content: center;
+				line-height: 2;
+				flex: 1;
+			}
+			ul.menu.nav li:not(:last-child):after {
+				content: "|";
+				padding: 0 13px;
+			}
+			ul.menu.social {
+				width: 192px;
+				margin-left: 50px;
+				justify-content: flex-end;
+			}
+			ul.menu.social li {
+				margin-left: 20px;
+			}
+			.hero {
+				padding: 30px 3% 30px;
+				background-color: transparent;
+			}
+			.hero .headpicture {
+				margin-right: -60px;
+			}
+			.heading h1 {
+				max-width: 430px;
+				font-size: 26px;
+				margin: 0;
+				line-height: 1.25;
+				text-align: center;
+			}
+			ul.cards {
+				list-style: none;
+				padding: 0;
+				display: flex;
+				flex-wrap: wrap;
+				place-content: center;
+				counter-reset: cards;
+			}
+			#sutazne-kategorie ul.cards li {
+				width: 220px;
+				position: relative;
+			}
+			#porota ul.cards li {
+				width: 140px;
+			}
+			#sutazne-kategorie ul.cards li {
+				margin: 0 25px 50px;
+			}
+			#porota ul.cards li {
+				margin: 0 15px 30px;
+			}
+			#sutazne-kategorie ul.cards li .pic {
+				margin-bottom: 40px;
+			}
+			#porota ul.cards li .pic {
+				margin-bottom: 30px;
+			}
+			ul.cards li h3 {
+				font-size: 1em;
+			}
+			#sutazne-kategorie ul.cards li h3:before {
+				position: absolute;
+				left: 0;
+				width: 40px;
+				counter-increment: cards;
+				content: counter(cards);
+				font-size: 2em;
+				color: #ffcfd5;
+			}
+			#sutazne-kategorie ul.cards li h3, #sutazne-kategorie ul.cards li p {
+				padding-left: 40px;
+			}
+			#sutazne-kategorie ul.cards li p {
+				color: #9b9b9b;
+			}
+			#porota ul.cards li p {
+				text-align: center;
+			}
+			#verejnost {
+				margin-left: 40px;
+			}
+			form {
+				display: flex;
+				flex-wrap: wrap;
+				max-width: 860px;
+			}
+			fieldset {
+				width: 100%;
+				margin: 0 0 1em;
+			}
+			fieldset.margin-top {
+				margin-top: 2em;
+			}
+			fieldset.center {
+				text-align: center;
+			}
+			fieldset.half, fieldset .half {
+				width: 46%;
+				margin-right: 3.99%;
+			}
+			fieldset.half + fieldset.half, fieldset .half + .half {
+				margin-left: 4%;
+				margin-right: 0;
+			}
+			fieldset .half {
+				float: left;
+			}
+			legend {
+				font-weight: 800;
+				margin-bottom: 1em;
+			}
+			:not(.upload-wrapper) fieldset legend {
+				margin-top: 1em;
+			}
+			fieldset label {
+				margin-bottom: 0.5em;
+			}
+			fieldset :not(input[type="radio"]):not(input[type="checkbox"]) + label, fieldset label:first-child {
+				display: block;
+			}
+			fieldset input[type="checkbox"] {
+				float: left;
+				margin-top: 3px;
+				margin-right: 0.5em;
+			}
+			fieldset input[type="checkbox"] + label {
+				display: block;
+				line-height: 1.5;
+			}
+			fieldset input[type="text"], fieldset input[type="email"], fieldset select, fieldset textarea {
+				display: block;
+				height: 40px;
+				width: 100%;
+				margin-bottom: 1em;
+				border: 0;
+				padding: 0 1em;
+			}
+			fieldset input[type="file"] {
+				width: calc(100%);
+				margin-bottom: 1em;
+				color: transparent;
+			}
+			fieldset select {
+				appearance: none;
+			}
+			fieldset .select-wrap {
+				position: relative;
+			}
+			fieldset .select-wrap:after {
+				content: "";
+				display: block;
+				width: 0;
+				height: 0;
+				border-bottom: 12px solid #000;
+				border-left: 12px solid transparent;
+				transform: rotate(45deg);
+				position: absolute;
+				right: 20px;
+				top: 10px;
+			}
+			fieldset textarea {
+				height: auto;
+				padding: 1em;
+			}
+			.upload-wrapper {
+				padding: 1em 1em 0;
+				background-color: #ffc4d1;
+				width: 46%;
+				margin-right: 3.99%;
+				margin-bottom: 1em;
+			}
+			.upload-wrapper + .upload-wrapper {
+				margin-left: 4%;
+				margin-right: 0;
+			}
+			label.file-list {
+				line-height: 1.5;
+			}
+			fieldset input[type="submit"] {
+				border: 0;
+				background-color: #000;
+				color: #fff;
+				font-size: 1em;
+				font-weight: 800;
+				display: block;
+				margin: 0 auto;
+				cursor: pointer;
+				padding: 1em 2em;
+			}
+			ul.download {
+				max-width: 860px;
+				list-style: none;
+				padding: 0;
+				display: flex;
+				flex-wrap: wrap;
+				
+			}
+			ul.download li {
+				width: 31%;
+				margin-left: 3%;
+				margin-bottom: 60px;
+				padding-left: 45px;
+				background-image: url(ico1.svg);
+				background-size: 30px 30px;
+				background-repeat: no-repeat;
+			}
+			ul.download li:nth-child(3n+1) {
+				margin-left: 0;
+			}
+			ul.download li.doc {
+				background-image: url(ico2.svg);
+			}
+			footer {
+				padding: 50px 3% 30px;
+				flex-direction: column;
+				background-color: #000;
+				color: #fff;
+			}
+			ul.menu.partners {
+				margin-bottom: 50px;
+			}
+			ul.menu.partners li:not(:first-child) {
+				margin-left: 80px;
+			}
+			.disclaimer {
+				font-size: 0.75em;
+			}
+			#response {
+				margin-top: 1em;
+				text-align: center;
+				font-weight: 800;
+			}
+			#submit.loading {
+				-webkit-animation: spin 2s linear infinite;
+				-moz-animation: spin 2s linear infinite;
+				animation: spin 2s linear infinite;
+			}
+			@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+			@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+			@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+			#form.verejnost .iba-clenovia {
+				display: none;
+			}
+			#hamburger {
+				display: none;
+			}
+			@media only screen and (max-width: 899px) {
+				#hamburger {
+					position: fixed;
+					z-index: 200;
+					top: 20px;
+					right: 5%;
+					display: block;
+					width: 50px;
+					height: 50px;
+					background-color: #000;
+					cursor: pointer;
+				}
+				#hamburger .hamburger-icon {
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					display: inline-block;
+					width: 25px;
+					height: 3px;
+					-webkit-transition-duration: 250ms;
+					-o-transition-duration: 250ms;
+					transition-duration: 250ms;
+					-webkit-transition-property: background-color, -webkit-transform;
+					transition-property: background-color, -webkit-transform;
+					-o-transition-property: background-color, transform;
+					transition-property: background-color, transform;
+					transition-property: background-color, transform, -webkit-transform;
+					-webkit-transform: translate(-50%, -50%);
+					-ms-transform: translate(-50%, -50%);
+					transform: translate(-50%, -50%);
+					background-color: #fff;
+				}
+				#hamburger .hamburger-icon::before, #hamburger .hamburger-icon::after {
+					position: absolute;
+					display: block;
+					width: 25px;
+					height: 3px;
+					content: '';
+					-webkit-transition-duration: 250ms;
+					-o-transition-duration: 250ms;
+					transition-duration: 250ms;
+					-webkit-transition-property: margin, -webkit-transform;
+					transition-property: margin, -webkit-transform;
+					-o-transition-property: margin, transform;
+					transition-property: margin, transform;
+					transition-property: margin, transform, -webkit-transform;
+					background: #fff;
+				}
+				#hamburger .hamburger-icon::before {
+					margin-top: -12px;
+				}
+				#hamburger .hamburger-icon::after {
+					margin-top: 12px;
+				}
+				.mobile-wrapper.open + #hamburger .hamburger-icon {
+					background: transparent;
+				}
+				.mobile-wrapper.open + #hamburger .hamburger-icon::before {
+					margin-top: 0;
+					-webkit-transform: rotate(45deg);
+					-ms-transform: rotate(45deg);
+					transform: rotate(45deg);
+				}
+				.mobile-wrapper.open + #hamburger .hamburger-icon::after {
+					margin-top: 0;
+					-webkit-transform: rotate(-45deg);
+					-ms-transform: rotate(-45deg);
+					transform: rotate(-45deg);
+				}
+				header .mobile-wrapper {
+					display: none;
+				}
+				header .mobile-wrapper.open {
+					display: block;
+					background: #fff;
+					position: fixed;
+					z-index: 1;
+					top: 0;
+					bottom: 0;
+					left: 0;
+					width: 100%;
+					padding: 20px 5%;
+				}
+				header .mobile-wrapper.open .menu.nav, header .mobile-wrapper.open .menu.nav li {
+					display: block;
+				}
+				header .mobile-wrapper.open a {
+					color: #000;
+				}
+				header .mobile-wrapper.open ul.menu.nav li::after {
+					content: "";
+					padding: 0;
+				}
+				header .mobile-wrapper.open ul.menu.social {
+					width: auto;
+					margin-left: 0;
+					justify-content: flex-start;
+				}
+				header .mobile-wrapper.open ul.menu.social li {
+					margin-left: 0;
+					margin-right: 20px;
+				}
+				header .mobile-wrapper.open ul.menu.social svg path, header .mobile-wrapper.open ul.menu.social svg circle {
+					fill: #000;
+				}
+				section, header, footer, .hero {
+					padding-left: 5%;
+					padding-right: 5%;
+				}
+				header .logo img {
+					width: 150px;
+				}
+			}
+			@media only screen and (max-width: 674px) {
+				fieldset.half, fieldset .half {
+					width: 100%;
+					margin-right: 0;
+				}
+				fieldset.half + fieldset.half, fieldset .half + .half {
+					margin-left: 0;
+				}
+				fieldset .half {
+					float: none;
+				}
+				.upload-wrapper {
+					width: 100%;
+					margin-right: 0;
+				}
+				.upload-wrapper + .upload-wrapper {
+					margin-left: 0;
+				}
+				ul.download {
+					flex-direction: column;
+				}
+				ul.download li {
+					width: 100%;
+					margin: 0 0 2em;
+				}
+				ul.menu.partners {
+					flex-direction: column;
+				}
+				ul.menu.partners li {
+					margin: 0 0 2em;
+				}
+				ul.menu.partners li:not(:first-child) {
+					margin-left: 0;
+				}
+				fieldset.center {
+					text-align: left;
+				}
+				fieldset.center label {
+					display: block;
+				}
+				fieldset.center input[type="radio"] {
+					float: left;
+					margin-right: 0.5em;
+				}
+				#verejnost {
+					margin-left: 0;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<div class="logo">
+				<a href="#"><img src="logo.svg"></a>
+			</div>
+			<div class="mobile-wrapper">
+				<ul class="menu nav">
+					<li><a href="#biela-kocka">Biela kocka</a></li>
+					<li><a href="#sutazne-kategorie">Súťažné kategórie</a></li>
+<!-- 					<li><a href="#porota">Porota</a></li> -->
+					<li><a href="#nominacny-formular">Nominačný formulár</a></li>
+					<li><a href="#na-stiahnutie">Na stiahnutie</a></li>
+				</ul>
+				<ul class="menu social">
+					<li><a href="https://www.facebook.com/bielakocka" target="_blank"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 30 30"><path fill="#FFFFFF" d="M27.609,0.827H2.391c-0.866,0-1.564,0.699-1.564,1.563v25.219 c0,0.864,0.698,1.564,1.564,1.564h13.575V18.196h-3.693v-4.279h3.693v-3.154c0-3.662,2.237-5.654,5.504-5.654 c1.564,0,2.908,0.115,3.301,0.168v3.825l-2.268,0.001c-1.775,0-2.119,0.844-2.119,2.084v2.73h4.236l-0.551,4.279h-3.686v10.977 h7.225c0.863,0,1.564-0.7,1.564-1.564V2.39C29.174,1.526,28.473,0.827,27.609,0.827z"></svg></a></li>
+					<li><a href="https://www.instagram.com/bielakocka/" target="_blank"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" viewBox="0 0 30 30"><path fill="#FFFFFF" d="M15,3.379c3.786,0,4.235,0.015,5.727,0.084c1.381,0.063,2.133,0.293,2.633,0.488 c0.662,0.256,1.133,0.563,1.629,1.059c0.496,0.496,0.805,0.969,1.061,1.63c0.195,0.499,0.426,1.251,0.488,2.632 c0.066,1.495,0.084,1.945,0.084,5.729c0,3.784-0.018,4.232-0.084,5.727c-0.063,1.383-0.293,2.134-0.488,2.633 c-0.256,0.662-0.564,1.135-1.061,1.629c-0.496,0.496-0.967,0.803-1.629,1.061c-0.5,0.195-1.252,0.425-2.633,0.488 C19.234,26.604,18.785,26.62,15,26.62c-3.786,0-4.232-0.017-5.727-0.083c-1.382-0.063-2.134-0.293-2.633-0.488 c-0.661-0.258-1.134-0.564-1.629-1.061c-0.495-0.494-0.804-0.967-1.061-1.629c-0.194-0.499-0.426-1.25-0.489-2.633 c-0.066-1.494-0.08-1.942-0.08-5.727c0-3.783,0.014-4.233,0.08-5.729C3.525,7.891,3.756,7.139,3.951,6.64 c0.257-0.661,0.565-1.134,1.061-1.63C5.506,4.515,5.979,4.207,6.64,3.951c0.499-0.195,1.251-0.426,2.633-0.488 C10.767,3.394,11.218,3.379,15,3.379 M15,0.827c-3.849,0-4.331,0.015-5.842,0.084C7.649,0.98,6.617,1.221,5.715,1.569 c-0.931,0.362-1.722,0.849-2.51,1.636C2.419,3.993,1.932,4.783,1.569,5.717c-0.35,0.9-0.588,1.93-0.658,3.439 C0.843,10.667,0.827,11.15,0.827,15s0.017,4.33,0.084,5.844c0.07,1.508,0.309,2.539,0.658,3.44 c0.363,0.932,0.851,1.723,1.637,2.51c0.788,0.788,1.579,1.273,2.51,1.636c0.901,0.35,1.934,0.589,3.442,0.659 c1.511,0.069,1.993,0.084,5.842,0.084c3.85,0,4.334-0.015,5.844-0.084c1.51-0.07,2.539-0.31,3.439-0.659 c0.934-0.362,1.723-0.848,2.512-1.636c0.789-0.787,1.273-1.578,1.637-2.51c0.35-0.901,0.588-1.933,0.656-3.44 c0.068-1.514,0.086-1.994,0.086-5.844s-0.018-4.333-0.086-5.844c-0.068-1.51-0.307-2.539-0.656-3.439 c-0.363-0.934-0.848-1.724-1.637-2.512c-0.789-0.787-1.578-1.273-2.512-1.636c-0.9-0.349-1.93-0.589-3.439-0.658 S18.85,0.827,15,0.827L15,0.827z"/><path fill="#FFFFFF" d="M15,7.721c-4.02,0-7.278,3.258-7.278,7.279c0,4.02,3.259,7.277,7.278,7.277 c4.022,0,7.278-3.258,7.278-7.277C22.277,10.979,19.021,7.721,15,7.721z M15,19.724c-2.608,0-4.725-2.114-4.725-4.724 s2.116-4.725,4.725-4.725c2.61,0,4.725,2.115,4.725,4.725S17.609,19.724,15,19.724z"/><circle fill="#FFFFFF" cx="22.566" cy="7.434" r="1.701"/></svg></a></li>
+				</ul>
+			</div>
+			<span id="hamburger"><span class="hamburger-icon"></span></span>
+		</header>
+		<section class="hero">
+			<p>
+				<img class="headpicture" src="topic-or8.png" alt="Biela kocka">
+			</p>
+		</section>
+		<section class="heading pink">
+			<h1>Cena Rady galérií Slovenska za prínos v oblasti galerijných činností za rok 2020</h1>
+		</section>
+		<section id="biela-kocka">
+			<h2>Biela kocka <sup>5</sup></h2>
+			<p>Rada galérií Slovenska každoročne vyhlasuje cenu za prínos v oblasti galerijných činností – BIELA KOCKA. Cena je určená odborníkom: teoretikom, kurátorom, galerijným pedagógom, reštaurátorom, dizajnérom, či kultúrnym manažérom.</p>
+			<p>Ocenenie je udeľované za edičné, prezentačné, edukačné, teoretické, či iné odborné projekty v oblasti galerijnej práce na Slovensku. Zámerom je uznanie odbornej práce, motivácia galerijných pracovníkov a spolupracovníkov, popularizácia galerijných aktivít.</p>
+			<p>Členovia RGS, nezávislí odborníci a verejnosť môžu nominovať v jednotlivých súťažných kategóriách odborných zamestnancov galérií aj externe spolupracujúcich odborníkov.</p>
+			<p>Ocenenie realizuje Rada galérií Slovenska od roku 2017 s finančnou podporou Fondu na podporu umenia.</p>
+		</section>
+		<section id="sutazne-kategorie" class="dark">
+			<h2>Súťažné kategórie</h2>
+			<ul class="cards">
+				<li>
+					<div class="pic">
+						<img src="kat1-or8.png" alt="">
+					</div>
+					<h3>Edičný projekt</h3>
+					<p>Odborná publikačná činnosť galérií</p>
+				</li>
+				<li>
+					<div class="pic">
+						<img src="kat2-or8.png" alt="">
+					</div>
+					<h3>Kurátorský projekt</h3>
+					<p>Novátorská kurátorská koncepcia a komplexná realizácia výstavy</p>
+				</li>
+				<li>
+					<div class="pic">
+						<img src="kat3-or8.png" alt="">
+					</div>
+					<h3>Edukačný projekt</h3>
+					<p>Mimoriadne výstupy v galerijnej pedagogike a inovatívne edukačné aktivity</p>
+				</li>
+				<li>
+					<div class="pic">
+						<img src="kat4-or8.png" alt="">
+					</div>
+					<h3>Iný odborný projekt v oblasti galerijných činností</h3>
+					<p>Mimoriadne zhodnotenie zbierkového fondu, reštaurovanie, dizajn alebo architektúra výstavy</p>
+				</li>
+				<li>
+					<div class="pic">
+						<img src="kat5-or8.png" alt="">
+					</div>
+					<h3>Nezávislý projekt v oblasti galerijných činností</h3>
+					<p>Galérie, ktoré nie sú členmi RGS, nezávislé a súkromné galérie a kultúrne centrá s profesionálnymi aktivitami v oblasti vizuálneho umenia</p>
+				</li>
+			</ul>
+		</section>
+<!--		<section id="porota">
+			<h2>Porota</h2>
+			<ul class="cards">
+				<li>
+					<div class="pic">
+						<img src="hlava1-or8.png" alt="">
+					</div>
+					<h3>Meno Priezvisko</h3>
+					<p>Má so čom najrôznejšie tá prišiel, no zápis zoberte vietor, s vysoké schopní čom procesy.</p>
+				</li>
+				<li>
+					<div class="pic">
+						<img src="hlava2-or8.png" alt="">
+					</div>
+					<h3>Meno Priezvisko</h3>
+					<p>Redukovať vo došlo krízy, sú zo typ svojou tisíc svojou evokovať vás a mýlil, cez procesov ľudia si o patrilo.</p>
+				</li>
+				<li>
+					<div class="pic">
+						<img src="hlava3-or8.png" alt="">
+					</div>
+					<h3>Meno Priezvisko</h3>
+					<p>Zachutí so minulosti efektu jedna spôsobiť, bod je materskej pokračuje.</p>
+				</li>
+				<li>
+					<div class="pic">
+						<img src="hlava4-or8.png" alt="">
+					</div>
+					<h3>Meno Priezvisko</h3>
+					<p>Možná telu nám medzi počet vyvíjané, dní od syn temné, no ku ňou vyvolávať o milióna čo s samo použitím mýli.</p>
+				</li>
+				<li>
+					<div class="pic">
+						<img src="hlava5-or8.png" alt="">
+					</div>
+					<h3>Meno Priezvisko</h3>
+					<p>Dlhoročným, povinnostiach rodinou marketingu reakcie silné, každého review stupeň oboch prídete zo aké uzučký závisí žartu.</p>
+				</li>
+			</ul>
+		</section>-->
+		<section id="nominacny-formular" class="pink">
+			<h2>Nominačný formulár <span class="subtitle">pre projekty za hodnotiace obdobie 1.&nbsp;1.&nbsp;2020 - 31.&nbsp;12.&nbsp;2020</span></h2>
+			<form id="form">
+				<fieldset class="inline center">
+					<input type="radio" name="clenovia-verejnost" id="clenovia" value="clenovia" checked>
+					<label for="clenovia">Členovia RGS a nezávislí odborníci</label>
+					<input type="radio" name="clenovia-verejnost" id="verejnost" value="verejnost">
+					<label for="verejnost">Verejnosť</label>
+				</fieldset>
+				<fieldset class="half">
+					<legend>Nominovaný</legend>
+					<label for="meno-priezvisko-nominovany">Meno a priezvisko nominovaného&nbsp;*</label>
+					<input type="text" name="meno-priezvisko-nominovany" id="meno-priezvisko-nominovany" required>
+					<label for="institucia">Inštitúcia</label>
+					<input type="text" name="institucia" id="institucia">
+					<label for="email-nominovany">E-mail&nbsp;*</label>
+					<input type="email" name="email-nominovany" id="email-nominovany" required>
+				</fieldset>
+				<fieldset class="half">
+					<legend>Projekt</legend>
+					<label for="kategoria">Kategória&nbsp;*</label>
+					<div class="select-wrap">
+						<select name="kategoria" id="kategoria" required>
+							<option value="">-- zvoľte</option>
+							<option value="edicny-projekt">Edičný projekt</option>
+							<option value="kuratorsky-projekt">Kurátorský projekt</option>
+							<option value="edukacny-projekt">Edukačný projekt</option>
+							<option value="iny-odborny-projekt">Iný odborný projekt</option>
+							<option value="nezavisly-projekt">Nezávislý projekt</option>
+						</select>
+					</div>
+					<label for="nazov-projektu">Názov nominovaného projektu&nbsp;*</label>
+					<input type="text" name="nazov-projektu" id="nazov-projektu" required>
+					<label for="miesto-termin">Miesto a termín realizácie / vydavateľ&nbsp;*</label>
+					<input type="text" name="miesto-termin" id="miesto-termin" required>
+				</fieldset>
+				<fieldset class="iba-clenovia">
+					<label for="popis">Celý popis projektu (max. 2000 znakov)&nbsp;*</label>
+					<textarea name="popis" id="popis" rows="8" maxlength="2000" required></textarea>
+				</fieldset>
+				<div class="upload-wrapper iba-clenovia">
+					<fieldset>
+						<legend>Obrázky&nbsp;*</legend>
+						<label for="obrazky">(max. 10 obrázkov / max. limit všetkých príloh – 10 MB)</label>
+						<input class="upload" type="file" name="obrazky[]" id="obrazky" multiple required>
+						<label class="file-list" for="obrazky"></label>
+					</fieldset>
+				</div>
+				<div class="upload-wrapper iba-clenovia">
+					<fieldset>
+						<legend>Iné prílohy</legend>
+						<label for="prilohy">(max. limit všetkých príloh – 10 MB)</label>
+						<input class="upload" type="file" name="prilohy[]" id="prilohy" multiple>
+						<label class="file-list" for="prilohy"></label>
+					</fieldset>
+				</div>
+				<fieldset>
+					<legend>Nominujúci</legend>
+					<div class="half">
+						<label for="meno-priezvisko-nominujuci">Meno a priezvisko&nbsp;*</label>
+						<input type="text" name="meno-priezvisko-nominujuci" id="meno-priezvisko-nominujuci" required>
+					</div>
+					<div class="half">
+						<label for="email-nominujuci">E-mail&nbsp;*</label>
+						<input type="email" name="email-nominujuci" id="email-nominujuci" required>
+					</div>
+				</fieldset>
+				<fieldset class="margin-top">
+					<input type="checkbox" name="moze-kontaktovany" id="moze-kontaktovany" value="moze-kontaktovany" required>
+					<label for="moze-kontaktovany">Na vyžiadanie poroty môže byť nominant dodatočne kontaktovaný&nbsp;*</label>
+					<input type="checkbox" name="suhlas" id="suhlas" value="suhlas" required>
+					<label for="suhlas">Súhlasím so spracovaním osobných údajov v zmysle §&nbsp;5 písm. a) a v zmysle §&nbsp;14 zákona č. 18/2018 Z. z. o ochrane osobných údajov a o zmene a doplnení niektorých zákonov&nbsp;*</label>
+				</fieldset>
+				<fieldset class="margin-top">
+					<input id="submit" type="submit" value="Odoslať">
+					<div id="response"></div>
+				</fieldset>
+		</section>
+		<section id="na-stiahnutie">
+			<h2>Na stiahnutie</h2>
+			<ul class="download">
+				<li><a href="biela kocka1 vysledky.pdf"><strong>Biela kocka <sup>1</sup></strong><br>Zoznam ocenených (pdf)</a></li>
+				<li><a href="vyhlasenie 2 rocnik BIELA KOCKA2_Ceny RGS za prinos v oblasti galerijnych cinnosti za rok 2017.pdf"><strong>Biela kocka <sup>2</sup></strong><br>Zoznam ocenených (pdf)</a></li>
+				<li><a href="1560322798-8020-Biela kocka3_zoznam nominovanych s bodovanim za rok 2018.docx"><strong>Biela kocka <sup>3</sup></strong><br>Zoznam ocenených (pdf)</a></li>
+				<li><a href="1607364294-5488-BIELA KOCKA 4.docx"><strong>Biela kocka <sup>4</sup></strong><br>Zoznam ocenených (pdf)</a></li>
+				<li class="doc"><a href="1545384756-4720-biela kocka_vseob t_stanovy.docx"><strong>Štatút ceny</strong> (pdf)</a></li>
+			</ul>
+		</section>
+		<footer>
+			<ul class="menu partners">
+				<li><a href="https://www.fpu.sk/" target="_blank"><img src="logo-fpu.svg"></a></li>
+				<li><a href="https://vsg.sk/" target="_blank"><img src="logo-vsg.svg"></a></li>
+				<li><a href="https://rgsr.sk/" target="_blank"><img src="logo-rgs.svg"></a></li>
+			</ul>
+			<div class="disclaimer">
+				<p>Realizáciu webstránky z verejných zdrojov podporil Fond na podporu umenia</p>
+			</div>
+		</footer>
+		<script
+			src="https://code.jquery.com/jquery-3.6.0.min.js"
+			integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+			crossorigin="anonymous"></script>
+		<script>
+			function storeFiles( input ) {
+				for ( var i = 0; i < input.files.length; i++ ) {
+					input.tmpFiles.push( input.files[i] );
+					input.nextElementSibling.innerHTML += input.files[i].name + '<br>';
+				}				
+			}
+
+			function toggleFormInputs( radio ) {
+				if ( radio.value === 'verejnost' ) {
+					$( '#form' ).addClass( 'verejnost' );
+					$( '.iba-clenovia input, .iba-clenovia textarea' ).prop( 'disabled', true );
+				} else {
+					$( '#form' ).removeClass( 'verejnost' );
+					$( '.iba-clenovia input, .iba-clenovia textarea' ).prop( 'disabled', false );
+				}
+			}
+
+			jQuery( document ).ready( function( $ ) {
+
+				toggleFormInputs( $( 'input[name="clenovia-verejnost"]:checked' )[0] );
+
+				$( 'input[name="clenovia-verejnost"]' ).on( 'change', function() {
+					toggleFormInputs( this );
+				} );
+
+				$( '.upload' ).each( function( e ) {
+					this.tmpFiles = new Array();
+					storeFiles( this );
+				} );
+
+				$( '.upload' ).on( 'change', function( e ) {
+					storeFiles( this );
+				} );
+
+				$( '#form' ).on( 'submit', function( e ) {
+					e.preventDefault();
+					var data = new FormData( this );
+					$( '.upload' ).each( function() {
+						if ( typeof( this.tmpFiles ) != 'undefined' ) {
+							for ( var i = 0; i < this.tmpFiles.length; i++ ) {
+								data.append( this.name, this.tmpFiles[i], this.tmpFiles[i].name );
+							}
+						}
+					} );
+					$.ajax( {
+						url: 'form.php',
+						type: 'POST',
+						enctype: 'multipart/form-data',
+						data: data,
+						processData: false,
+						contentType: false,
+						beforeSend: function () {
+							$( '#submit' ).addClass( "loading" );
+							$( '#response' ).html( "" );
+						},
+						success: function( msg ) {
+							$( '#submit' ).removeClass( "loading" );
+							$( '#response' ).html( msg );
+							$( '#form' ).trigger( 'reset' );
+						}
+					} );
+					return false;
+				} );
+
+				$( '#hamburger' ).on( 'click', function( e ) {
+					$( '.mobile-wrapper' ).toggleClass( 'open' );
+				} );
+
+				$( '.mobile-wrapper a' ).on( 'click', function( e ) {
+					$( '.mobile-wrapper' ).removeClass( 'open' );
+				} );
+			} );
+		</script>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-CMD83K7N2G"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+		
+			gtag('config', 'G-CMD83K7N2G');
+		</script>
+	</body>
+</html>
