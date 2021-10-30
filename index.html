@@ -373,6 +373,9 @@
 				text-align: center;
 				font-weight: 800;
 			}
+			#response.error {
+				color: red;
+			}
 			#submit.loading {
 				-webkit-animation: spin 2s linear infinite;
 				-moz-animation: spin 2s linear infinite;
@@ -753,6 +756,8 @@
 				$( '#form' ).on( 'submit', function( e ) {
 					e.preventDefault();
 					var data = new FormData( this );
+					data.delete( 'obrazky[]' );
+					data.delete( 'prilohy[]' );
 					$( '.upload' ).each( function() {
 						if ( typeof( this.tmpFiles ) != 'undefined' ) {
 							for ( var i = 0; i < this.tmpFiles.length; i++ ) {
@@ -771,10 +776,19 @@
 							$( '#submit' ).addClass( "loading" );
 							$( '#response' ).html( "" );
 						},
-						success: function( msg ) {
+						success: function( response ) {
 							$( '#submit' ).removeClass( "loading" );
-							$( '#response' ).html( msg );
+							$( '#response' ).html( response.msg );
+							if ( response.success ) {
+								$( '#response' ).removeClass( 'error' );
 							$( '#form' ).trigger( 'reset' );
+								$( '.file-list' ).html( '' );
+								$( '.upload' ).each( function( e ) {
+									this.tmpFiles = new Array();
+								} );
+							} else {
+								$( '#response' ).addClass( 'error' );
+							}
 						}
 					} );
 					return false;

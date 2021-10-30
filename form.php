@@ -2,6 +2,27 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
+function bk_send_json( $msg, $success = true ) {
+	echo json_encode( array( 'success' => $success, 'msg' => $msg ) );
+	die;
+}
+
+if ( ! headers_sent() ) {
+	header( 'Content-Type: application/json; charset=utf-8' );
+	header( 'Expires: Wed, 23 Mar 1982 21:08:00 GMT' );
+	header( 'Cache-Control: no-cache, must-revalidate, max-age=0' );
+}
+
+foreach ( array( "obrazky", "prilohy" ) as $upload ) {
+	$size = 0;
+	for ( $i = 0; $i < count( $_FILES[ $upload ]['size'] ); $i++ ) {
+		$size += $_FILES[ $upload ]['size'][ $i ];
+	}
+	if ( $size > 10 * 1024 * 1024 ) {
+		bk_send_json( "Priložené súbory prekračujú hranicu 10 MB!", false );
+	}
+}
+
 require 'vendor/autoload.php';
 
 $mail = new PHPMailer();
@@ -66,7 +87,7 @@ $mail->msgHTML( $msg );
 $mail->IsHTML( true );
 
 $uid = uniqid();
-mkdir( "uploads/" . $uid );
+mkdir( "uploads/" . $uid, 0777, true );
 file_put_contents( "uploads/" . $uid . "/form.html", $msg );
 
 foreach ( array( "obrazky", "prilohy" ) as $upload ) {
@@ -76,17 +97,17 @@ foreach ( array( "obrazky", "prilohy" ) as $upload ) {
 			$uploadfile = "uploads/" . $uid . "/" . $filename;
 			if ( move_uploaded_file( $_FILES[ $upload ]['tmp_name'][ $i ], $uploadfile ) ) {
 				if ( ! $mail->addAttachment( $uploadfile, $filename ) ) {
-					echo "Nepodarilo sa priložiť súbor " . $filename;
+					bk_send_json( "Nepodarilo sa priložiť súbor " . $filename, false );
 				}
 			} else {
-				echo "Nepodarilo sa presunúť súbor " . $uploadfile;
+				bk_send_json( "Nepodarilo sa presunúť súbor " . $uploadfile, false );
 			}
 		}
 	}
 }
 
 if ( ! $mail->send() ) {
-	echo "Formulár sa nepodarilo odoslať, chyba: " . $mail->ErrorInfo;
+	bk_send_json( "Formulár sa nepodarilo odoslať, chyba: " . $mail->ErrorInfo, false );
 } else {
-	echo "Formulár bol úspešne odoslaný, ďakujeme.";
+	bk_send_json( "Formulár bol úspešne odoslaný, ďakujeme." );
 }
