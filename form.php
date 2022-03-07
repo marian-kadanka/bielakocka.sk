@@ -29,7 +29,7 @@ $mail = new PHPMailer();
 $mail->CharSet = PHPMailer::CHARSET_UTF8;;
 $mail->setFrom( "noreply@bielakocka.sk", $_POST["meno-priezvisko-nominujuci"] );
 $mail->addReplyTo( $_POST["email-nominujuci"], $_POST["meno-priezvisko-nominujuci"] );
-$mail->addAddress( "dominika@vsg.sk" );
+$mail->addAddress( "marian@kadanka.net" );
 $mail->addAddress( "rada.galerii.slovenska@gmail.com" );
 $mail->Subject = "Nominačný formulár Biela kocka";
 $mail->WordWrap = 80;
