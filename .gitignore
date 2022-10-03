@@ -8,7 +8,6 @@ Thumbs.db
 *.kate-swp
 
 # Ignore specific files
-.htaccess
 /vendor
 node_modules
 bower_components
