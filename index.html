@@ -73,6 +73,12 @@
 			a:hover svg path, a:hover svg circle {
 				fill: #37ff6e;
 			}
+			.highlight a:hover {
+				color: #fff;
+			}
+			.highlight a:hover svg path, .highlight a:hover svg circle {
+				fill: #fff;
+			}
 			fieldset {
 				border: 0;
 				padding: 0;
@@ -105,7 +111,10 @@
 				display: block;
 				line-height: 1.5;
 			}
-			section p {
+			section h3 {
+				text-align: center;
+			}
+			section p, #oceneni div {
 				max-width: 800px;
 				margin: 0 0 1em;
 				text-align: left;
@@ -219,6 +228,16 @@
 			}
 			#verejnost {
 				margin-left: 40px;
+			}
+			#oceneni div {
+				width: 100%;
+			}
+			#oceneni div, #oceneni p {
+				margin-bottom: 50px;
+			}
+			#oceneni iframe {
+				width: 100%;
+				aspect-ratio: 16/9;
 			}
 			form {
 				display: flex;
@@ -568,6 +587,7 @@
 					<li><a href="#sutazne-kategorie">Súťažné kategórie</a></li>
 					<li><a href="#porota">Porota</a></li>
 					<li><a href="#nominacny-formular">Nominačný formulár</a></li>
+					<li><a href="#oceneni">Ocenení</a></li>
 					<li><a href="#na-stiahnutie">Na stiahnutie</a></li>
 				</ul>
 				<ul class="menu social">
@@ -675,7 +695,16 @@
 		<section id="nominacny-formular" class="highlight">
 			<h2>Nominácie sú pre tento rok ukončené. <span class="subtitle">Sledujte náš web a sociálne siete pre ďalšie informácie.</span></h2>
 		</section>
-		<section id="na-stiahnutie">
+		<section id="oceneni">
+			<h2>Ocenení <span class="subtitle">za rok 2021</span></h2>
+			<h3>BIELA KOCKA 6 - Edičný projekt, víťazný medailón</h3>
+			<p><audio controls src="bk6-edicny-projekt.mp4"></audio></p>
+			<div><iframe src="https://www.youtube-nocookie.com/embed/rNVSQaeKeZQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+			<div><iframe src="https://www.youtube-nocookie.com/embed/uvGR0xP9dRU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+			<div><iframe src="https://www.youtube-nocookie.com/embed/xlLlU10WPVw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+			<div><iframe src="https://www.youtube-nocookie.com/embed/jP-KmD7czoU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+		</section>
+		<section id="na-stiahnutie" class="highlight">
 			<h2>Na stiahnutie</h2>
 			<ul class="download">
 				<li><a href="biela kocka1 vysledky.pdf"><strong>Biela kocka <sup>1</sup></strong><br>Zoznam ocenených (pdf)</a></li>
