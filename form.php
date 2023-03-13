@@ -23,17 +23,6 @@ foreach ( array( "obrazky", "prilohy" ) as $upload ) {
 	}
 }
 
-require 'vendor/autoload.php';
-
-$mail = new PHPMailer();
-$mail->CharSet = PHPMailer::CHARSET_UTF8;;
-$mail->setFrom( "noreply@bielakocka.sk", $_POST["meno-priezvisko-nominujuci"] );
-$mail->addReplyTo( $_POST["email-nominujuci"], $_POST["meno-priezvisko-nominujuci"] );
-$mail->addAddress( "marian@kadanka.net" );
-$mail->addAddress( "rada.galerii.slovenska@gmail.com" );
-$mail->Subject = "Nominačný formulár Biela kocka";
-$mail->WordWrap = 80;
-
 $form = array(
 	"Nominovaný",
 	"meno-priezvisko-nominovany" => "Meno a priezvisko nominovaného",
@@ -60,6 +49,7 @@ $cats = array(
 	"nezavisly-projekt" => "Nezávislý projekt",
 );
 
+$empty_form = true;
 $msg = "";
 
 foreach ( $form as $key => $field ) {
@@ -70,6 +60,7 @@ foreach ( $form as $key => $field ) {
 			$msg .= "<br>";
 		}
 	} elseif ( array_key_exists( $key, $_POST ) ) {
+		$empty_form = false;
 		if ( $key === "kategoria" ) {
 			$value = $cats[ $_POST[ $key ] ];
 		} elseif ( $key === "moze-kontaktovany" ) {
@@ -82,6 +73,21 @@ foreach ( $form as $key => $field ) {
 		$msg .= $field . ": " . $value . "<br>";
 	}
 }
+
+if ( $empty_form ) {
+	bk_send_json( "Formulár je prázdny!", false );
+}
+
+require 'vendor/autoload.php';
+
+$mail = new PHPMailer();
+$mail->CharSet = PHPMailer::CHARSET_UTF8;;
+$mail->setFrom( "noreply@bielakocka.sk", $_POST["meno-priezvisko-nominujuci"] );
+$mail->addReplyTo( $_POST["email-nominujuci"], $_POST["meno-priezvisko-nominujuci"] );
+$mail->addAddress( "marian@kadanka.net" );
+$mail->addAddress( "rada.galerii.slovenska@gmail.com" );
+$mail->Subject = "Nominačný formulár Biela kocka";
+$mail->WordWrap = 80;
 
 $mail->msgHTML( $msg );
 $mail->IsHTML( true );
